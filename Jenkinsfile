@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     options {
-        timeout(time: 20, unit: 'MINUTES')   // kill hung builds
+        timeout(time: 20, unit: 'MINUTES')
         disableConcurrentBuilds()
     }
 
@@ -10,6 +10,12 @@ pipeline {
         stage('Checkout') {
             steps {
                 checkout scm
+            }
+        }
+
+        stage('Secret scan (gitleaks)') {
+            steps {
+                sh 'gitleaks detect --source . --redact --verbose --exit-code 1'
             }
         }
 
