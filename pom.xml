@@ -13,7 +13,7 @@
 
   <groupId>com.example</groupId>
   <artifactId>demo</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.1</version>
   <name>demo</name>
   <description>Demo Spring Boot app for the Jenkins CI/CD project</description>
 
@@ -44,24 +44,13 @@
     </dependency>
   </dependencies>
 
-  <distributionManagement>
-    <repository>
-      <id>nexus-releases</id>
-      <url>${nexus.url}/repository/maven-releases/</url>
-    </repository>
-    <snapshotRepository>
-      <id>nexus-snapshots</id>
-      <url>${nexus.url}/repository/maven-snapshots/</url>
-    </snapshotRepository>
-  </distributionManagement>
-
   <build>
     <plugins>
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
-      <!-- code coverage report, used later by SonarQube -->
+      <!-- code coverage report, used later by SonarCloud -->
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
